@@ -15,15 +15,16 @@ export const ApiKeyPrompt: React.FC = () => {
         }
     })
     return (
-        <form onSubmit={formik.handleSubmit}>
-            <Grid item xs={12} md={12}>
+        <Grid item xs={12} md={12}>
+            <form onSubmit={formik.handleSubmit}>
                 <TextField
                     label="Carbon Interface API key"
                     value={formik.values.apiKey}
                     name="apiKey"
                     onChange={formik.handleChange}
+                    fullWidth
                 />
-            </Grid>
-        </form>
+            </form>
+        </Grid>
     )
 }

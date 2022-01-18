@@ -18,7 +18,7 @@ it('returns transformed data', () => {
           country: '',
           electricity_unit: 'mwh',
           electricity_value: 0,
-          estimated_at: 'date',
+          estimated_at: '2022-01-18T11:10:12.225Z',
           state: null,
         },
         id: '',
@@ -30,7 +30,9 @@ it('returns transformed data', () => {
   expect(result).toStrictEqual<TransformedData>([
     {
       carbon_g: 0,
-      label: 'date',
+      carbon_kg: 0,
+      carbon_mt: 0,
+      label: '01/18',
     },
   ]);
 });

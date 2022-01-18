@@ -17,3 +17,11 @@ export interface UsageEntry {
     type: string;
   };
 }
+
+export interface TransformedDataEntry {
+  carbon_g: number;
+  label: string;
+}
+
+export type TransformedData = Array<TransformedDataEntry>
+

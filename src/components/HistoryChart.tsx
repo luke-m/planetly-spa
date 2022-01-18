@@ -2,13 +2,8 @@ import { Grid } from '@mui/material'
 import React, { useContext, useEffect, useState } from 'react'
 import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts'
 import { GlobalContext } from '../contexts'
-
-interface TransformedDataEntry {
-    carbon_g: number;
-    label: string;
-}
-
-type TransformedData = Array<TransformedDataEntry>
+import { TransformedData } from '../interfaces'
+import { transformData } from './utils/transformData'
 
 export const HistoryChart: React.FC = () => {
     const { usageEntries } = useContext(GlobalContext);
@@ -16,19 +11,7 @@ export const HistoryChart: React.FC = () => {
     const [transformedData, setTransformedData] = useState<TransformedData>();
 
     useEffect(() => {
-        const transformed = usageEntries.reduce((acc: TransformedData, value) => {
-            // do not mutate function params
-            const temp = acc;
-
-            temp.push({
-                carbon_g: value.data.attributes.carbon_g,
-                label: value.data.attributes.estimated_at
-            });
-
-            return temp;
-        }, []);
-
-        setTransformedData(transformed)
+        setTransformedData(transformData(usageEntries))
     }, [usageEntries])
 
     return (

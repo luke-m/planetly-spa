@@ -1,4 +1,4 @@
-import { Button, Grid, MenuItem, Select } from '@mui/material'
+import { Button, FormControl, Grid, MenuItem, Select, InputLabel } from '@mui/material'
 import { Formik } from 'formik'
 import React, { useContext, useEffect, useState } from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
@@ -27,7 +27,7 @@ export const HistoryChart: React.FC = () => {
         <>
             <Formik
                 initialValues={{
-                    countryFilter: 'US'
+                    countryFilter: ''
                 }}
                 onSubmit={(values) => {
                     setCountryFilter(values.countryFilter);
@@ -49,7 +49,7 @@ export const HistoryChart: React.FC = () => {
                                         value: 'CO2 usage in megatonnes',
                                         angle: -90,
                                         position: 'insideBottomLeft'
-                                    }}/>
+                                    }} />
                                     <Tooltip />
                                 </BarChart>
                             </ResponsiveContainer>
@@ -58,26 +58,30 @@ export const HistoryChart: React.FC = () => {
                             <form onSubmit={handleSubmit}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
-                                        <Select
-                                            value={values.countryFilter}
-                                            onChange={handleChange}
-                                            name="countryFilter"
-                                            fullWidth
-                                        >
-                                            {SUPPORTED_COUNTRIES && SUPPORTED_COUNTRIES.map(({ API_NAME, READABLE_NAME }) => {
-                                                return (
-                                                    <MenuItem key={READABLE_NAME} value={API_NAME}>{READABLE_NAME}</MenuItem>
-                                                )
-                                            })}
-                                        </Select>
+                                        <FormControl fullWidth>
+                                            <InputLabel>Country</InputLabel>
+                                            <Select
+                                                value={values.countryFilter}
+                                                onChange={handleChange}
+                                                name="countryFilter"
+                                                label="Country"
+                                            >
+                                                <MenuItem value=""><em>None</em></MenuItem>
+                                                {SUPPORTED_COUNTRIES && SUPPORTED_COUNTRIES.map(({ API_NAME, READABLE_NAME }) => {
+                                                    return (
+                                                        <MenuItem key={READABLE_NAME} value={API_NAME}>{READABLE_NAME}</MenuItem>
+                                                    )
+                                                })}
+                                            </Select>
+                                        </FormControl>
                                     </Grid>
-                                    <Grid item xs={12} md={4}>
+                                    <Grid item xs={12}>
                                         <Button
                                             variant="outlined"
                                             type="submit"
                                             fullWidth
                                         >
-                                            Filter!
+                                            Filter by Country
                                         </Button>
                                     </Grid>
                                 </Grid>

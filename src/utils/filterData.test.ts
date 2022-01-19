@@ -1,4 +1,4 @@
-import { UsageEntries } from '../../interfaces';
+import { UsageEntries } from '../interfaces';
 import { filterData } from './filterData';
 
 it('returns empty array when usageEntries is empty and country undefined', () => {

@@ -1,4 +1,4 @@
-import { TransformedData, UsageEntries } from '../../interfaces';
+import { TransformedData, UsageEntries } from '../interfaces';
 import { format } from 'date-fns';
 
 export const transformData = (data: UsageEntries) => {

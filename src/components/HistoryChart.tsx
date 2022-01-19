@@ -5,8 +5,8 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxi
 import { SUPPORTED_COUNTRIES } from '../config'
 import { GlobalContext } from '../contexts'
 import { TransformedData } from '../interfaces'
-import { filterData } from './utils/filterData'
-import { transformData } from './utils/transformData'
+import { filterData } from '../utils/filterData'
+import { transformData } from '../utils/transformData'
 
 export const HistoryChart: React.FC = () => {
     const { usageEntries } = useContext(GlobalContext);
@@ -38,8 +38,8 @@ export const HistoryChart: React.FC = () => {
                     handleSubmit,
                     handleChange
                 }) => (
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} md={8}>
+                    <Grid container spacing={2} mt={5}>
+                        <Grid item xs={12} md={10}>
                             <ResponsiveContainer width={'100%'} height={300}>
                                 <BarChart data={transformedData} margin={{ top: 20, right: 50, bottom: 20, left: 50 }}>
                                     <Bar dataKey="carbon_mt" fill="#8884d8" />
@@ -54,7 +54,7 @@ export const HistoryChart: React.FC = () => {
                                 </BarChart>
                             </ResponsiveContainer>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid item xs={12} md={2}>
                             <form onSubmit={handleSubmit}>
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>

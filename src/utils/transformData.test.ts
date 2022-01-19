@@ -1,4 +1,4 @@
-import { TransformedData } from '../../interfaces';
+import { TransformedData } from '../interfaces';
 import { transformData } from './transformData';
 
 it('returns empty array for empty array input', () => {

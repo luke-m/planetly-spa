@@ -1,4 +1,4 @@
-import { UsageEntries } from '../../interfaces';
+import { UsageEntries } from '../interfaces';
 
 export const filterData = (usageEntries: UsageEntries, country?: string) => {
   if (country) {
